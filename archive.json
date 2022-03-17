@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-06T00:30:19.887110+00:00",
+  "timestamp": "2022-03-17T00:29:54.108973+00:00",
   "repo": "ietf-tapswg/api-drafts",
   "labels": [
     {
@@ -8065,7 +8065,7 @@
       "id": "MDU6SXNzdWUzMjgzMzc0ODM=",
       "title": "Replace long author lists with editors",
       "url": "https://github.com/ietf-tapswg/api-drafts/issues/184",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tfpauly",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -8076,8 +8076,8 @@
       ],
       "body": "The RFC Editor has become rather strict in implementing the 5 author limit for drafts:\r\n\r\nThis document has more than five authors listed, which is considered excessive under normal circumstances. If you plan to request publication as an RFC, this will require additional consideration by the stream manager (for example, the IESG), and publication may be declined unless sufficient justification is provided. See RFC 7322, section 4.1.1 for details.\r\n\r\nWe should update these for -01",
       "createdAt": "2018-06-01T00:06:32Z",
-      "updatedAt": "2021-10-22T07:27:32Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-16T19:15:05Z",
+      "closedAt": "2022-03-16T19:15:05Z",
       "comments": [
         {
           "author": "gorryfair",
@@ -8162,6 +8162,13 @@
           "body": "A review of the author list for the Arch and Implementation has allowed a reduction in the number of authors. Thanks is really appreciated to those who agreed to remove their names as authors from these specific documents, allowing the WG to meet this guidance. See: PR #959 and PR#960.",
           "createdAt": "2021-10-22T07:26:03Z",
           "updatedAt": "2021-10-22T07:27:32Z"
+        },
+        {
+          "author": "theri",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think this issue has now been resolved: We have reduced the authors on arch and impl to 5, and we have arguments for keeping the interface doc at 7 authors.\r\nSo I'll close this issue.",
+          "createdAt": "2022-03-16T19:15:05Z",
+          "updatedAt": "2022-03-16T19:15:05Z"
         }
       ]
     },
