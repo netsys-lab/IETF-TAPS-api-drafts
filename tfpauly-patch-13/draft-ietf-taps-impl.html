@@ -1287,13 +1287,10 @@ event-driven interaction pattern. This document serves as a guide to implementat
                 <p id="section-toc.1-1.10.2.3.1"><a href="#section-10.3" class="xref">10.3</a>.  <a href="#name-udp" class="xref">UDP</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.4">
-                <p id="section-toc.1-1.10.2.4.1"><a href="#section-10.4" class="xref">10.4</a>.  <a href="#name-udp-lite" class="xref">UDP-Lite</a></p>
+                <p id="section-toc.1-1.10.2.4.1"><a href="#section-10.4" class="xref">10.4</a>.  <a href="#name-udp-multicast-receive" class="xref">UDP Multicast Receive</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.5">
-                <p id="section-toc.1-1.10.2.5.1"><a href="#section-10.5" class="xref">10.5</a>.  <a href="#name-udp-multicast-receive" class="xref">UDP Multicast Receive</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.6">
-                <p id="section-toc.1-1.10.2.6.1"><a href="#section-10.6" class="xref">10.6</a>.  <a href="#name-sctp" class="xref">SCTP</a></p>
+                <p id="section-toc.1-1.10.2.5.1"><a href="#section-10.5" class="xref">10.5</a>.  <a href="#name-sctp" class="xref">SCTP</a></p>
 </li>
             </ul>
 </li>
@@ -2342,14 +2339,12 @@ For example, the mapping of the <code>Send</code> function for TCP applies to Co
           <dd class="break"></dd>
 <dt id="section-10.1-4.27">CloseGroup:</dt>
           <dd style="margin-left: 1.5em" id="section-10.1-4.28">
-            <p id="section-10.1-4.28.1">Calling <code>CloseGroup</code> on a TCP Connection (CLOSE.TCP) is identical to calling <code>Close</code> on all TCP Connections
-within a group.<a href="#section-10.1-4.28.1" class="pilcrow">¶</a></p>
+            <p id="section-10.1-4.28.1">Calling <code>CloseGroup</code> on a TCP Connection (CLOSE.TCP) is identical to calling <code>Close</code> on this Connection and on all Connections in the same ConnectionGroup.<a href="#section-10.1-4.28.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-10.1-4.29">AbortGroup:</dt>
           <dd style="margin-left: 1.5em" id="section-10.1-4.30">
-            <p id="section-10.1-4.30.1">Calling <code>AbortGroup</code> on a TCP Connection (ABORT.TCP) is identical to calling <code>Abort</code> on all TCP Connections
-within a group.<a href="#section-10.1-4.30.1" class="pilcrow">¶</a></p>
+            <p id="section-10.1-4.30.1">Calling <code>AbortGroup</code> on a TCP Connection (ABORT.TCP) is identical to calling <code>Abort</code> on this Connection and on all Connections in the same ConnectionGroup.<a href="#section-10.1-4.30.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2442,220 +2437,212 @@ such as "Multipath Transport" and "Policy for using Multipath Transports".<a hre
           <dd class="break"></dd>
 <dt id="section-10.3-4.27">CloseGroup:</dt>
           <dd style="margin-left: 1.5em" id="section-10.3-4.28">
-            <p id="section-10.3-4.28.1">Calling <code>CloseGroup</code> on a UDP Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code> on all
-UDP Connections within a group.<a href="#section-10.3-4.28.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-4.28.1">Calling <code>CloseGroup</code> on a UDP Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code> on this Connection and on all Connections in the same ConnectionGroup.<a href="#section-10.3-4.28.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-10.3-4.29">AbortGroup:</dt>
           <dd style="margin-left: 1.5em" id="section-10.3-4.30">
-            <p id="section-10.3-4.30.1">Calling <code>AbortGroup</code> on a UDP Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code> on all
-UDP Connections within a group.<a href="#section-10.3-4.30.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-4.30.1">Calling <code>AbortGroup</code> on a UDP Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code> on this Connection and on all Connections in the same ConnectionGroup.
+## UDP-Lite<a href="#section-10.3-4.30.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-</section>
-</div>
-<div id="udp-lite">
-<section id="section-10.4">
-        <h3 id="name-udp-lite">
-<a href="#section-10.4" class="section-number selfRef">10.4. </a><a href="#name-udp-lite" class="section-name selfRef">UDP-Lite</a>
-        </h3>
-<p id="section-10.4-1">Connectedness: Connectionless<a href="#section-10.4-1" class="pilcrow">¶</a></p>
-<p id="section-10.4-2">Data Unit: Datagram<a href="#section-10.4-2" class="pilcrow">¶</a></p>
-<p id="section-10.4-3">The Transport Services API mappings for UDP-Lite are identical to UDP. Properties that require checksum coverage are not supported
+<p id="section-10.3-5">Connectedness: Connectionless<a href="#section-10.3-5" class="pilcrow">¶</a></p>
+<p id="section-10.3-6">Data Unit: Datagram<a href="#section-10.3-6" class="pilcrow">¶</a></p>
+<p id="section-10.3-7">The Transport Services API mappings for UDP-Lite are identical to UDP. Properties that require checksum coverage are not supported
 by UDP-Lite, such as "Corruption Protection Length", "Full Checksum Coverage on Sending", 
-"Required Minimum Corruption Protection Coverage for Receiving", and "Full Checksum Coverage on Receiving".<a href="#section-10.4-3" class="pilcrow">¶</a></p>
+"Required Minimum Corruption Protection Coverage for Receiving", and "Full Checksum Coverage on Receiving".<a href="#section-10.3-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="udp-multicast-receive">
-<section id="section-10.5">
+<section id="section-10.4">
         <h3 id="name-udp-multicast-receive">
-<a href="#section-10.5" class="section-number selfRef">10.5. </a><a href="#name-udp-multicast-receive" class="section-name selfRef">UDP Multicast Receive</a>
+<a href="#section-10.4" class="section-number selfRef">10.4. </a><a href="#name-udp-multicast-receive" class="section-name selfRef">UDP Multicast Receive</a>
         </h3>
-<p id="section-10.5-1">Connectedness: Connectionless<a href="#section-10.5-1" class="pilcrow">¶</a></p>
-<p id="section-10.5-2">Data Unit: Datagram<a href="#section-10.5-2" class="pilcrow">¶</a></p>
-<p id="section-10.5-3">API mappings for Receiving Multicast UDP are as follows:<a href="#section-10.5-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-10.5-4">
-          <dt id="section-10.5-4.1">Connection Object:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-4.2">
-            <p id="section-10.5-4.2.1">Established UDP Multicast Receive connections represent a pair of specific IP addresses and ports.  The "unidirectional receive" transport property is required, and the Local Endpoint must be configured with a group IP address and a port.<a href="#section-10.5-4.2.1" class="pilcrow">¶</a></p>
+<p id="section-10.4-1">Connectedness: Connectionless<a href="#section-10.4-1" class="pilcrow">¶</a></p>
+<p id="section-10.4-2">Data Unit: Datagram<a href="#section-10.4-2" class="pilcrow">¶</a></p>
+<p id="section-10.4-3">API mappings for Receiving Multicast UDP are as follows:<a href="#section-10.4-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-10.4-4">
+          <dt id="section-10.4-4.1">Connection Object:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-4.2">
+            <p id="section-10.4-4.2.1">Established UDP Multicast Receive connections represent a pair of specific IP addresses and ports.  The "unidirectional receive" transport property is required, and the Local Endpoint must be configured with a group IP address and a port.<a href="#section-10.4-4.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-4.3">Initiate:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-4.4">
-            <p id="section-10.5-4.4.1">Calling <code>Initiate</code> on a UDP Multicast Receive Connection causes an immediate InitiateError.  This is an unsupported operation.<a href="#section-10.5-4.4.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-4.3">Initiate:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-4.4">
+            <p id="section-10.4-4.4.1">Calling <code>Initiate</code> on a UDP Multicast Receive Connection causes an immediate InitiateError.  This is an unsupported operation.<a href="#section-10.4-4.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-4.5">InitiateWithSend:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-4.6">
-            <p id="section-10.5-4.6.1">Calling <code>InitiateWithSend</code> on a UDP Multicast Receive Connection causes an immediate InitiateError.  This is an unsupported operation.<a href="#section-10.5-4.6.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-4.5">InitiateWithSend:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-4.6">
+            <p id="section-10.4-4.6.1">Calling <code>InitiateWithSend</code> on a UDP Multicast Receive Connection causes an immediate InitiateError.  This is an unsupported operation.<a href="#section-10.4-4.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-4.7">Ready:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-4.8">
-            <p id="section-10.5-4.8.1">A UDP Multicast Receive Connection is ready once the system has received traffic for the appropriate group and port.<a href="#section-10.5-4.8.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-4.7">Ready:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-4.8">
+            <p id="section-10.4-4.8.1">A UDP Multicast Receive Connection is ready once the system has received traffic for the appropriate group and port.<a href="#section-10.4-4.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-4.9">InitiateError:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-4.10">
-            <p id="section-10.5-4.10.1">UDP Multicast Receive Connections generate an InitiateError if Initiate is called.<a href="#section-10.5-4.10.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-4.9">InitiateError:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-4.10">
+            <p id="section-10.4-4.10.1">UDP Multicast Receive Connections generate an InitiateError if Initiate is called.<a href="#section-10.4-4.10.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-4.11">ConnectionError:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-4.12">
-            <p id="section-10.5-4.12.1">Once in use, UDP throws "soft errors" (ERROR.UDP(-Lite)) upon receiving ICMP notifications indicating failures in the network.<a href="#section-10.5-4.12.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-4.11">ConnectionError:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-4.12">
+            <p id="section-10.4-4.12.1">Once in use, UDP throws "soft errors" (ERROR.UDP(-Lite)) upon receiving ICMP notifications indicating failures in the network.<a href="#section-10.4-4.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-4.13">Listen:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-4.14">
-            <p id="section-10.5-4.14.1">LISTEN.UDP. Calling <code>Listen</code> for UDP Multicast Receive binds a local port, prepares it to receive inbound UDP datagrams from peers, and issues a multicast host join.  If a Remote Endpoint with an address is supplied, the join is Source-specific Multicast, and the path selection is based on the route to the Remote Endpoint.  If a Remote Endpoint is not supplied, the join is Any-source Multicast, and the path selection is based on the outbound route to the group supplied in the Local Endpoint.<a href="#section-10.5-4.14.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-4.13">Listen:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-4.14">
+            <p id="section-10.4-4.14.1">LISTEN.UDP. Calling <code>Listen</code> for UDP Multicast Receive binds a local port, prepares it to receive inbound UDP datagrams from peers, and issues a multicast host join.  If a Remote Endpoint with an address is supplied, the join is Source-specific Multicast, and the path selection is based on the route to the Remote Endpoint.  If a Remote Endpoint is not supplied, the join is Any-source Multicast, and the path selection is based on the outbound route to the group supplied in the Local Endpoint.<a href="#section-10.4-4.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-10.5-5">There are cases where it is required to open multiple connections for the same address(es). 
+<p id="section-10.4-5">There are cases where it is required to open multiple connections for the same address(es). 
 For example, one Connection might be opened for a multicast group to for a multicast control bus, 
 and another application later opens a separate Connection to the same group to send signals to and/or receive signals from the common bus. 
 In such cases, the Transport Services system needs to explicitly enable re-use of the same set of addresses (equivalent to setting SO_REUSEADDR 
-in the socket API).<a href="#section-10.5-5" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-10.5-6">
-          <dt id="section-10.5-6.1">ConnectionReceived:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-6.2">
-            <p id="section-10.5-6.2.1">UDP Multicast Receive Listeners will deliver new connections once they have received traffic from a new Remote Endpoint.<a href="#section-10.5-6.2.1" class="pilcrow">¶</a></p>
+in the socket API).<a href="#section-10.4-5" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-10.4-6">
+          <dt id="section-10.4-6.1">ConnectionReceived:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-6.2">
+            <p id="section-10.4-6.2.1">UDP Multicast Receive Listeners will deliver new connections once they have received traffic from a new Remote Endpoint.<a href="#section-10.4-6.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-6.3">Clone:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-6.4">
-            <p id="section-10.5-6.4.1">Calling <code>Clone</code> on a UDP Multicast Receive Connection creates a new Connection with equivalent parameters. The two Connections are otherwise independent.<a href="#section-10.5-6.4.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-6.3">Clone:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-6.4">
+            <p id="section-10.4-6.4.1">Calling <code>Clone</code> on a UDP Multicast Receive Connection creates a new Connection with equivalent parameters. The two Connections are otherwise independent.<a href="#section-10.4-6.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-6.5">Send:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-6.6">
-            <p id="section-10.5-6.6.1">SEND.UDP(-Lite). Calling <code>Send</code> on a UDP Multicast Receive connection causes an immediate SendError.  This is an unsupported operation.<a href="#section-10.5-6.6.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-6.5">Send:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-6.6">
+            <p id="section-10.4-6.6.1">SEND.UDP(-Lite). Calling <code>Send</code> on a UDP Multicast Receive connection causes an immediate SendError.  This is an unsupported operation.<a href="#section-10.4-6.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-6.7">Receive:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-6.8">
-            <p id="section-10.5-6.8.1">RECEIVE.UDP(-Lite). The Receive operation in a UDP Multicast Receive connection only delivers complete Messages to <code>Received</code>, each of which represents a single datagram received in a UDP packet. Upon receiving a UDP datagram, the ECN flag from the IP header can be obtained (GET_ECN.UDP(-Lite)).<a href="#section-10.5-6.8.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-6.7">Receive:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-6.8">
+            <p id="section-10.4-6.8.1">RECEIVE.UDP(-Lite). The Receive operation in a UDP Multicast Receive connection only delivers complete Messages to <code>Received</code>, each of which represents a single datagram received in a UDP packet. Upon receiving a UDP datagram, the ECN flag from the IP header can be obtained (GET_ECN.UDP(-Lite)).<a href="#section-10.4-6.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-6.9">Close:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-6.10">
-            <p id="section-10.5-6.10.1">Calling <code>Close</code> on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) releases the local port reservation and leaves the group.<a href="#section-10.5-6.10.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-6.9">Close:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-6.10">
+            <p id="section-10.4-6.10.1">Calling <code>Close</code> on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) releases the local port reservation and leaves the group.<a href="#section-10.4-6.10.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-6.11">Abort:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-6.12">
-            <p id="section-10.5-6.12.1">Calling <code>Abort</code> on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code>.<a href="#section-10.5-6.12.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-6.11">Abort:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-6.12">
+            <p id="section-10.4-6.12.1">Calling <code>Abort</code> on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code>.<a href="#section-10.4-6.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-6.13">CloseGroup:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-6.14">
-            <p id="section-10.5-6.14.1">Calling <code>CloseGroup</code> on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code> on all UDP Multicast Receive  Connections within a group.<a href="#section-10.5-6.14.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-6.13">CloseGroup:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-6.14">
+            <p id="section-10.4-6.14.1">Calling <code>CloseGroup</code> on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code> on this Connection and on all Connections in the same ConnectionGroup.<a href="#section-10.4-6.14.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.5-6.15">AbortGroup:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.5-6.16">
-            <p id="section-10.5-6.16.1">Calling <code>AbortGroup</code> on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code>
-on all UDP Multicast Receive  Connections within a group.<a href="#section-10.5-6.16.1" class="pilcrow">¶</a></p>
+<dt id="section-10.4-6.15">AbortGroup:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.4-6.16">
+            <p id="section-10.4-6.16.1">Calling <code>AbortGroup</code> on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling <code>Close</code>
+on this Connection and on all Connections in the same ConnectionGroup.<a href="#section-10.4-6.16.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 </section>
 </div>
 <div id="sctp">
-<section id="section-10.6">
+<section id="section-10.5">
         <h3 id="name-sctp">
-<a href="#section-10.6" class="section-number selfRef">10.6. </a><a href="#name-sctp" class="section-name selfRef">SCTP</a>
+<a href="#section-10.5" class="section-number selfRef">10.5. </a><a href="#name-sctp" class="section-name selfRef">SCTP</a>
         </h3>
-<p id="section-10.6-1">Connectedness: Connected<a href="#section-10.6-1" class="pilcrow">¶</a></p>
-<p id="section-10.6-2">Data Unit: Message<a href="#section-10.6-2" class="pilcrow">¶</a></p>
-<p id="section-10.6-3">API mappings for SCTP are as follows:<a href="#section-10.6-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-10.6-4">
-          <dt id="section-10.6-4.1">Connection Object:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-4.2">
-            <p id="section-10.6-4.2.1">Connection objects can be mapped to an SCTP association or a stream in an SCTP association. Mapping Connection objects to SCTP streams is called "stream mapping" and has additional requirements as follows. The following explanation assumes a client-server communication model.<a href="#section-10.6-4.2.1" class="pilcrow">¶</a></p>
+<p id="section-10.5-1">Connectedness: Connected<a href="#section-10.5-1" class="pilcrow">¶</a></p>
+<p id="section-10.5-2">Data Unit: Message<a href="#section-10.5-2" class="pilcrow">¶</a></p>
+<p id="section-10.5-3">API mappings for SCTP are as follows:<a href="#section-10.5-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-10.5-4">
+          <dt id="section-10.5-4.1">Connection Object:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-4.2">
+            <p id="section-10.5-4.2.1">Connection objects can be mapped to an SCTP association or a stream in an SCTP association. Mapping Connection objects to SCTP streams is called "stream mapping" and has additional requirements as follows. The following explanation assumes a client-server communication model.<a href="#section-10.5-4.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-10.6-5">Stream mapping requires an association to already be in place between the client and the server, and it requires the server to understand that a new incoming stream should be represented as a new Connection Object by the Transport Services system. A new SCTP stream is created by sending an SCTP message with a new stream id. Thus, to implement stream mapping, the Transport Services API MUST provide a newly created Connection Object to the application upon the reception of such a message. The necessary semantics to implement a Transport Services system Close and Abort primitives are provided by the stream reconfiguration (reset) procedure described in <span>[<a href="#RFC6525" class="xref">RFC6525</a>]</span>. This also allows to re-use a stream id after resetting ("closing") the stream. To implement this functionality, SCTP stream reconfiguration <span>[<a href="#RFC6525" class="xref">RFC6525</a>]</span> MUST be supported by both the client and the server side.<a href="#section-10.6-5" class="pilcrow">¶</a></p>
-<p id="section-10.6-6">To avoid head-of-line blocking, stream mapping SHOULD only be implemented when both sides support message interleaving <span>[<a href="#RFC8260" class="xref">RFC8260</a>]</span>. This allows a sender to schedule transmissions between multiple streams without risking that transmission of a large message on one stream might block transmissions on other streams for a long time.<a href="#section-10.6-6" class="pilcrow">¶</a></p>
-<p id="section-10.6-7">To avoid conflicts between stream ids, the following procedure is recommended: the first Connection, for which the SCTP association has been created, MUST always use stream id zero. All additional Connections are assigned to unused stream ids in growing order. To avoid a conflict when both endpoints map new Connections simultaneously, the peer which initiated association MUST use even stream ids whereas the remote side MUST map its Connections to odd stream ids. Both sides maintain a status map of the assigned stream ids. Generally, new streams SHOULD consume the lowest available (even or odd, depending on the side) stream id; this rule is relevant when lower ids become available because Connection objects associated with the streams are closed.<a href="#section-10.6-7" class="pilcrow">¶</a></p>
-<p id="section-10.6-8">SCTP stream mapping as described here has been implemented in a research prototype; a desription of this implementation is given in <span>[<a href="#NEAT-flow-mapping" class="xref">NEAT-flow-mapping</a>]</span>.<a href="#section-10.6-8" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-10.6-9">
-          <dt id="section-10.6-9.1">Initiate:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.2">
-            <p id="section-10.6-9.2.1">If this is the only Connection object that is assigned to the SCTP Association or stream mapping is
+<p id="section-10.5-5">Stream mapping requires an association to already be in place between the client and the server, and it requires the server to understand that a new incoming stream should be represented as a new Connection Object by the Transport Services system. A new SCTP stream is created by sending an SCTP message with a new stream id. Thus, to implement stream mapping, the Transport Services API MUST provide a newly created Connection Object to the application upon the reception of such a message. The necessary semantics to implement a Transport Services system Close and Abort primitives are provided by the stream reconfiguration (reset) procedure described in <span>[<a href="#RFC6525" class="xref">RFC6525</a>]</span>. This also allows to re-use a stream id after resetting ("closing") the stream. To implement this functionality, SCTP stream reconfiguration <span>[<a href="#RFC6525" class="xref">RFC6525</a>]</span> MUST be supported by both the client and the server side.<a href="#section-10.5-5" class="pilcrow">¶</a></p>
+<p id="section-10.5-6">To avoid head-of-line blocking, stream mapping SHOULD only be implemented when both sides support message interleaving <span>[<a href="#RFC8260" class="xref">RFC8260</a>]</span>. This allows a sender to schedule transmissions between multiple streams without risking that transmission of a large message on one stream might block transmissions on other streams for a long time.<a href="#section-10.5-6" class="pilcrow">¶</a></p>
+<p id="section-10.5-7">To avoid conflicts between stream ids, the following procedure is recommended: the first Connection, for which the SCTP association has been created, MUST always use stream id zero. All additional Connections are assigned to unused stream ids in growing order. To avoid a conflict when both endpoints map new Connections simultaneously, the peer which initiated association MUST use even stream ids whereas the remote side MUST map its Connections to odd stream ids. Both sides maintain a status map of the assigned stream ids. Generally, new streams SHOULD consume the lowest available (even or odd, depending on the side) stream id; this rule is relevant when lower ids become available because Connection objects associated with the streams are closed.<a href="#section-10.5-7" class="pilcrow">¶</a></p>
+<p id="section-10.5-8">SCTP stream mapping as described here has been implemented in a research prototype; a desription of this implementation is given in <span>[<a href="#NEAT-flow-mapping" class="xref">NEAT-flow-mapping</a>]</span>.<a href="#section-10.5-8" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-10.5-9">
+          <dt id="section-10.5-9.1">Initiate:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.2">
+            <p id="section-10.5-9.2.1">If this is the only Connection object that is assigned to the SCTP Association or stream mapping is
 not used, CONNECT.SCTP is called. Else, unless the Selection Property <code>activeReadBeforeSend</code>
 is Preferred or Required, a new stream is used: if there are enough streams
 available, <code>Initiate</code> is a local operation that assigns a new stream id to the Connection object.
 The number of streams is negotiated as a parameter of the prior CONNECT.SCTP call, and it represents a
 trade-off between local resource usage and the number of Connection objects that can be mapped
-without requiring a reconfiguration signal. When running out of streams, ADD_STREAM.SCTP must be called.<a href="#section-10.6-9.2.1" class="pilcrow">¶</a></p>
+without requiring a reconfiguration signal. When running out of streams, ADD_STREAM.SCTP must be called.<a href="#section-10.5-9.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.3">InitiateWithSend:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.4">
-            <p id="section-10.6-9.4.1">If this is the only Connection object that is assigned to the SCTP association or stream mapping is not used, CONNECT.SCTP is called with the "user message" parameter. Else, a new stream
+<dt id="section-10.5-9.3">InitiateWithSend:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.4">
+            <p id="section-10.5-9.4.1">If this is the only Connection object that is assigned to the SCTP association or stream mapping is not used, CONNECT.SCTP is called with the "user message" parameter. Else, a new stream
 is used (see <code>Initiate</code> for how to handle running out of streams), and this just sends the first message
-on a new stream.<a href="#section-10.6-9.4.1" class="pilcrow">¶</a></p>
+on a new stream.<a href="#section-10.5-9.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.5">Ready:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.6">
-            <p id="section-10.6-9.6.1"><code>Initiate</code> or <code>InitiateWithSend</code> returns without an error, i.e. SCTP's four-way handshake has completed. If an association with the peer already exists, stream mapping is used and enough streams are available, a Connection Object instantly becomes Ready after calling <code>Initiate</code> or <code>InitiateWithSend</code>.<a href="#section-10.6-9.6.1" class="pilcrow">¶</a></p>
+<dt id="section-10.5-9.5">Ready:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.6">
+            <p id="section-10.5-9.6.1"><code>Initiate</code> or <code>InitiateWithSend</code> returns without an error, i.e. SCTP's four-way handshake has completed. If an association with the peer already exists, stream mapping is used and enough streams are available, a Connection Object instantly becomes Ready after calling <code>Initiate</code> or <code>InitiateWithSend</code>.<a href="#section-10.5-9.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.7">InitiateError:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.8">
-            <p id="section-10.6-9.8.1">Failure of CONNECT.SCTP.<a href="#section-10.6-9.8.1" class="pilcrow">¶</a></p>
+<dt id="section-10.5-9.7">InitiateError:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.8">
+            <p id="section-10.5-9.8.1">Failure of CONNECT.SCTP.<a href="#section-10.5-9.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.9">ConnectionError:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.10">
-            <p id="section-10.6-9.10.1">TIMEOUT.SCTP or ABORT-EVENT.SCTP.<a href="#section-10.6-9.10.1" class="pilcrow">¶</a></p>
+<dt id="section-10.5-9.9">ConnectionError:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.10">
+            <p id="section-10.5-9.10.1">TIMEOUT.SCTP or ABORT-EVENT.SCTP.<a href="#section-10.5-9.10.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.11">Listen:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.12">
-            <p id="section-10.6-9.12.1">LISTEN.SCTP. If an association with the peer already exists and stream mapping is used, <code>Listen</code> just expects to receive a new message with a new stream id (chosen in accordance with the stream id assignment procedure described above).<a href="#section-10.6-9.12.1" class="pilcrow">¶</a></p>
+<dt id="section-10.5-9.11">Listen:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.12">
+            <p id="section-10.5-9.12.1">LISTEN.SCTP. If an association with the peer already exists and stream mapping is used, <code>Listen</code> just expects to receive a new message with a new stream id (chosen in accordance with the stream id assignment procedure described above).<a href="#section-10.5-9.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.13">ConnectionReceived:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.14">
-            <p id="section-10.6-9.14.1">LISTEN.SCTP returns without an error (a result of successful CONNECT.SCTP from the peer), or, in case of stream mapping, the first message has arrived on a new stream (in this case, <code>Receive</code> is also invoked).<a href="#section-10.6-9.14.1" class="pilcrow">¶</a></p>
+<dt id="section-10.5-9.13">ConnectionReceived:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.14">
+            <p id="section-10.5-9.14.1">LISTEN.SCTP returns without an error (a result of successful CONNECT.SCTP from the peer), or, in case of stream mapping, the first message has arrived on a new stream (in this case, <code>Receive</code> is also invoked).<a href="#section-10.5-9.14.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.15">Clone:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.16">
-            <p id="section-10.6-9.16.1">Calling <code>Clone</code> on an SCTP association creates a new Connection object and assigns it a new stream id in accordance with the stream id assignment procedure described above. If there are not enough streams available, ADD_STREAM.SCTP must be called.<a href="#section-10.6-9.16.1" class="pilcrow">¶</a></p>
+<dt id="section-10.5-9.15">Clone:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.16">
+            <p id="section-10.5-9.16.1">Calling <code>Clone</code> on an SCTP association creates a new Connection object and assigns it a new stream id in accordance with the stream id assignment procedure described above. If there are not enough streams available, ADD_STREAM.SCTP must be called.<a href="#section-10.5-9.16.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.17">Priority (Connection):</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.18">
-            <p id="section-10.6-9.18.1">When this value is changed, or a Message with Message Property <code>Priority</code> is sent, and there are multiple
+<dt id="section-10.5-9.17">Priority (Connection):</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.18">
+            <p id="section-10.5-9.18.1">When this value is changed, or a Message with Message Property <code>Priority</code> is sent, and there are multiple
 Connection objects assigned to the same SCTP association,
-CONFIGURE_STREAM_SCHEDULER.SCTP is called to adjust the priorities of streams in the SCTP association.<a href="#section-10.6-9.18.1" class="pilcrow">¶</a></p>
+CONFIGURE_STREAM_SCHEDULER.SCTP is called to adjust the priorities of streams in the SCTP association.<a href="#section-10.5-9.18.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.19">Send:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.20">
-            <p id="section-10.6-9.20.1">SEND.SCTP. Message Properties such as <code>Lifetime</code> and <code>Ordered</code> map to parameters of this primitive.<a href="#section-10.6-9.20.1" class="pilcrow">¶</a></p>
+<dt id="section-10.5-9.19">Send:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.20">
+            <p id="section-10.5-9.20.1">SEND.SCTP. Message Properties such as <code>Lifetime</code> and <code>Ordered</code> map to parameters of this primitive.<a href="#section-10.5-9.20.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-10.6-9.21">Receive:</dt>
-          <dd style="margin-left: 1.5em" id="section-10.6-9.22">
-            <p id="section-10.6-9.22.1">RECEIVE.SCTP. The "partial flag" of RECEIVE.SCTP invokes a <code>ReceivedPartial</code> event.<a href="#section-10.6-9.22.1" class="pilcrow">¶</a></p>
+<dt id="section-10.5-9.21">Receive:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.5-9.22">
+            <p id="section-10.5-9.22.1">RECEIVE.SCTP. The "partial flag" of RECEIVE.SCTP invokes a <code>ReceivedPartial</code> event.<a href="#section-10.5-9.22.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-10.6-10">Close:
-If this is the only Connection object that is assigned to the SCTP association, CLOSE.SCTP is called, and the <code>Closed</code> event will be delivered to the application upon the ensuing CLOSE-EVENT.SCTP. Else, the Connection object is one out of several Connection objects that are assigned to the same SCTP assocation, and RESET_STREAM.SCTP must be called, which informs the peer that the stream will no longer be used for mapping and can be used by future <code>Initiate</code>, <code>InitiateWithSend</code> or <code>Listen</code> calls. At the peer, the event RESET_STREAM-EVENT.SCTP will fire, which the peer must answer by issuing RESET_STREAM.SCTP too. The resulting local RESET_STREAM-EVENT.SCTP informs the Transport Services system that the stream id can now be re-used by the next <code>Initiate</code>, <code>InitiateWithSend</code> or <code>Listen</code> calls, and invokes a <code>Closed</code> event towards the application.<a href="#section-10.6-10" class="pilcrow">¶</a></p>
-<p id="section-10.6-11">Abort:
-If this is the only Connection object that is assigned to the SCTP association, ABORT.SCTP is called. Else, the Connection object is one out of several Connection objects that are assigned to the same SCTP assocation, and shutdown proceeds as described under <code>Close</code>.<a href="#section-10.6-11" class="pilcrow">¶</a></p>
-<p id="section-10.6-12">CloseGroup:
-Calling <code>CloseGroup</code> calls CLOSE.SCTP, closing all Connections in the SCTP association.<a href="#section-10.6-12" class="pilcrow">¶</a></p>
-<p id="section-10.6-13">AbortGroup:
-Calling <code>AbortGroup</code> calls ABORT.SCTP, immediately closing all Connections in the SCTP association.<a href="#section-10.6-13" class="pilcrow">¶</a></p>
+<p id="section-10.5-10">Close:
+If this is the only Connection object that is assigned to the SCTP association, CLOSE.SCTP is called, and the <code>Closed</code> event will be delivered to the application upon the ensuing CLOSE-EVENT.SCTP. Else, the Connection object is one out of several Connection objects that are assigned to the same SCTP assocation, and RESET_STREAM.SCTP must be called, which informs the peer that the stream will no longer be used for mapping and can be used by future <code>Initiate</code>, <code>InitiateWithSend</code> or <code>Listen</code> calls. At the peer, the event RESET_STREAM-EVENT.SCTP will fire, which the peer must answer by issuing RESET_STREAM.SCTP too. The resulting local RESET_STREAM-EVENT.SCTP informs the Transport Services system that the stream id can now be re-used by the next <code>Initiate</code>, <code>InitiateWithSend</code> or <code>Listen</code> calls, and invokes a <code>Closed</code> event towards the application.<a href="#section-10.5-10" class="pilcrow">¶</a></p>
+<p id="section-10.5-11">Abort:
+If this is the only Connection object that is assigned to the SCTP association, ABORT.SCTP is called. Else, the Connection object is one out of several Connection objects that are assigned to the same SCTP assocation, and shutdown proceeds as described under <code>Close</code>.<a href="#section-10.5-11" class="pilcrow">¶</a></p>
+<p id="section-10.5-12">CloseGroup:
+Calling <code>CloseGroup</code> calls CLOSE.SCTP, closing all Connections in the SCTP association.<a href="#section-10.5-12" class="pilcrow">¶</a></p>
+<p id="section-10.5-13">AbortGroup:
+Calling <code>AbortGroup</code> calls ABORT.SCTP, immediately closing all Connections in the SCTP association.<a href="#section-10.5-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
