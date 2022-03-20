@@ -5,14 +5,14 @@
 TAPS Working Group                                     A. Brunstrom, Ed.
 Internet-Draft                                       Karlstad University
 Intended status: Informational                             T. Pauly, Ed.
-Expires: 20 September 2022                                    Apple Inc.
+Expires: 21 September 2022                                    Apple Inc.
                                                              T. Enghardt
                                                                  Netflix
                                                                P. Tiesel
                                                                   SAP SE
                                                                 M. Welzl
                                                       University of Oslo
-                                                           19 March 2022
+                                                           20 March 2022
 
 
              Implementing Interfaces to Transport Services
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 September 2022.
+   This Internet-Draft will expire on 21 September 2022.
 
 Copyright Notice
 
@@ -1765,10 +1765,10 @@ MessageFramer.Deliver(Connection, MessageContext, Data, IsEndOfMessage)
       peer (ABORT.TCP).
 
    CloseGroup:  Calling CloseGroup on a TCP Connection (CLOSE.TCP) is
-      identical to calling Close.
+      identical to calling Close on all TCP Connections within a group.
 
    AbortGroup:  Calling AbortGroup on a TCP Connection (ABORT.TCP) is
-      identical to calling Abort.
+      identical to calling Abort on all TCP Connections within a group.
 
 10.2.  MPTCP
 
@@ -1837,10 +1837,12 @@ MessageFramer.Deliver(Connection, MessageContext, Data, IsEndOfMessage)
       identical to calling Close.
 
    CloseGroup:  Calling CloseGroup on a UDP Connection (ABORT.UDP(-
-      Lite)) is identical to calling Close.
+      Lite)) is identical to calling Close on all UDP Connections within
+      a group.
 
    AbortGroup:  Calling AbortGroup on a UDP Connection (ABORT.UDP(-
-      Lite)) is identical to calling Close.
+      Lite)) is identical to calling Close on all UDP Connections within
+      a group.
 
 10.4.  UDP-Lite
 
@@ -1930,10 +1932,12 @@ MessageFramer.Deliver(Connection, MessageContext, Data, IsEndOfMessage)
       (ABORT.UDP(-Lite)) is identical to calling Close.
 
    CloseGroup:  Calling CloseGroup on a UDP Multicast Receive Connection
-      (ABORT.UDP(-Lite)) is identical to calling Close.
+      (ABORT.UDP(-Lite)) is identical to calling Close on all UDP
+      Multicast Receive Connections within a group.
 
    AbortGroup:  Calling AbortGroup on a UDP Multicast Receive Connection
-      (ABORT.UDP(-Lite)) is identical to calling Close.
+      (ABORT.UDP(-Lite)) is identical to calling Close on all UDP
+      Multicast Receive Connections within a group.
 
 10.6.  SCTP
 
