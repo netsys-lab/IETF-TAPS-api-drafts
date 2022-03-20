@@ -5,7 +5,7 @@
 TAPS Working Group                                      B. Trammell, Ed.
 Internet-Draft                                   Google Switzerland GmbH
 Intended status: Standards Track                           M. Welzl, Ed.
-Expires: 3 September 2022                             University of Oslo
+Expires: 21 September 2022                            University of Oslo
                                                              T. Enghardt
                                                                  Netflix
                                                             G. Fairhurst
@@ -18,7 +18,7 @@ Expires: 3 September 2022                             University of Oslo
                                                                   SAP SE
                                                                 T. Pauly
                                                               Apple Inc.
-                                                            2 March 2022
+                                                           20 March 2022
 
 
      An Abstract Application Layer Interface to Transport Services
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 September 2022.
+   This Internet-Draft will expire on 21 September 2022.
 
 Copyright Notice
 
@@ -3588,9 +3588,9 @@ Connection -> ReceivedPartial<messageData(500 bytes), messageContext, true>
    [I-D.ietf-taps-impl]
               Brunstrom, A., Pauly, T., Enghardt, T., Tiesel, P. S., and
               M. Welzl, "Implementing Interfaces to Transport Services",
-              Work in Progress, Internet-Draft, draft-ietf-taps-impl-11,
-              9 January 2022, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-taps-impl-11>.
+              Work in Progress, Internet-Draft, draft-ietf-taps-impl-12,
+              7 March 2022, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-taps-impl-12>.
 
    [RFC2474]  Nichols, K., Blake, S., Baker, F., and D. Black,
               "Definition of the Differentiated Services Field (DS

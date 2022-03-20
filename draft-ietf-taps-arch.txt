@@ -5,14 +5,14 @@
 TAPS Working Group                                         T. Pauly, Ed.
 Internet-Draft                                                Apple Inc.
 Intended status: Standards Track                        B. Trammell, Ed.
-Expires: 3 September 2022                        Google Switzerland GmbH
+Expires: 21 September 2022                       Google Switzerland GmbH
                                                             A. Brunstrom
                                                      Karlstad University
                                                             G. Fairhurst
                                                   University of Aberdeen
                                                               C. Perkins
                                                    University of Glasgow
-                                                            2 March 2022
+                                                           20 March 2022
 
 
                  An Architecture for Transport Services
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 September 2022.
+   This Internet-Draft will expire on 21 September 2022.
 
 Copyright Notice
 
@@ -1176,12 +1176,12 @@ Table of Contents
 
    [I-D.ietf-taps-interface]
               Trammell, B., Welzl, M., Enghardt, T., Fairhurst, G.,
-              Kuehlewind, M., Perkins, C., Tiesel, P. S., Wood, C. A.,
-              Pauly, T., and K. Rose, "An Abstract Application Layer
-              Interface to Transport Services", Work in Progress,
-              Internet-Draft, draft-ietf-taps-interface-14, 3 January
-              2022, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              taps-interface-14>.
+              Kuehlewind, M., Perkins, C., Tiesel, P. S., and T. Pauly,
+              "An Abstract Application Layer Interface to Transport
+              Services", Work in Progress, Internet-Draft, draft-ietf-
+              taps-interface-15, 7 March 2022,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-taps-
+              interface-15>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1197,9 +1197,9 @@ Table of Contents
    [I-D.ietf-taps-impl]
               Brunstrom, A., Pauly, T., Enghardt, T., Tiesel, P. S., and
               M. Welzl, "Implementing Interfaces to Transport Services",
-              Work in Progress, Internet-Draft, draft-ietf-taps-impl-11,
-              9 January 2022, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-taps-impl-11>.
+              Work in Progress, Internet-Draft, draft-ietf-taps-impl-12,
+              7 March 2022, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-taps-impl-12>.
 
    [POSIX]    "IEEE Std. 1003.1-2008 Standard for Information Technology
               -- Portable Operating System Interface (POSIX).  Open
