@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-17T00:29:54.108973+00:00",
+  "timestamp": "2022-03-20T00:31:48.264739+00:00",
   "repo": "ietf-tapswg/api-drafts",
   "labels": [
     {
@@ -20929,7 +20929,7 @@
       ],
       "body": "QUIC beat TAPS to the RFC Ed queue. Should the implementation draft provide a specific considerations sections for QUIC?\r\n\r\nIn my mental model of TAPS, providing a common API for QUIC implementations is one of the main reasons for TAPS adoption.",
       "createdAt": "2021-01-27T16:59:04Z",
-      "updatedAt": "2021-01-28T17:54:40Z",
+      "updatedAt": "2022-03-19T21:42:48Z",
       "closedAt": null,
       "comments": [
         {
@@ -20952,6 +20952,13 @@
           "body": "I believe we had previously decided to use the mapping documents, as @abrunstrom indicates. Marking as such.",
           "createdAt": "2021-01-28T17:54:40Z",
           "updatedAt": "2021-01-28T17:54:40Z"
+        },
+        {
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "See https://github.com/tfpauly/draft-taps-quic-mapping",
+          "createdAt": "2022-03-19T21:42:48Z",
+          "updatedAt": "2022-03-19T21:42:48Z"
         }
       ]
     },
@@ -78709,6 +78716,44 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 1008,
+      "id": "PR_kwDOBx1JF840sY6b",
+      "title": "Add CloseGroup/AbortGroup to mappings",
+      "url": "https://github.com/ietf-tapswg/api-drafts/pull/1008",
+      "state": "OPEN",
+      "author": "tfpauly",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "tfpauly"
+      ],
+      "labels": [
+        "Implementation"
+      ],
+      "body": "",
+      "createdAt": "2022-03-19T21:42:23Z",
+      "updatedAt": "2022-03-19T23:10:38Z",
+      "baseRepository": "ietf-tapswg/api-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "5a8b9e20d23e0aa668be3c666c96652084685611",
+      "headRepository": "ietf-tapswg/api-drafts",
+      "headRefName": "tfpauly-patch-13",
+      "headRefOid": "7fb9d8d7cad525eb03ae9d4cf047c54c129b136f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "mwelzl",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Why this \"calling CloseGroup is identical to calling Close\" everywhere?  This seems counter-intuitive... am I missing something?   If I create a Connection Group by cloning a Connection a couple of times, no matter what the underlying protocol is, I would expect that calling CloseGroup on one of them closes them all.  This would match the semantics described in the interface draft, section 10.",
+          "createdAt": "2022-03-19T23:10:38Z",
+          "updatedAt": "2022-03-19T23:10:38Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }
