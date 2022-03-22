@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-20T00:31:48.264739+00:00",
+  "timestamp": "2022-03-22T00:32:38.436810+00:00",
   "repo": "ietf-tapswg/api-drafts",
   "labels": [
     {
@@ -78722,7 +78722,7 @@
       "id": "PR_kwDOBx1JF840sY6b",
       "title": "Add CloseGroup/AbortGroup to mappings",
       "url": "https://github.com/ietf-tapswg/api-drafts/pull/1008",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tfpauly",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -78733,27 +78733,241 @@
       ],
       "body": "",
       "createdAt": "2022-03-19T21:42:23Z",
-      "updatedAt": "2022-03-19T23:10:38Z",
+      "updatedAt": "2022-03-20T16:28:20Z",
       "baseRepository": "ietf-tapswg/api-drafts",
       "baseRefName": "master",
       "baseRefOid": "5a8b9e20d23e0aa668be3c666c96652084685611",
       "headRepository": "ietf-tapswg/api-drafts",
       "headRefName": "tfpauly-patch-13",
-      "headRefOid": "7fb9d8d7cad525eb03ae9d4cf047c54c129b136f",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "e5f0c2ce9114ac7285343eecaceb3a45605039b6",
+      "closedAt": "2022-03-20T16:28:12Z",
+      "mergedAt": "2022-03-20T16:28:12Z",
+      "mergedBy": "abrunstrom",
+      "mergeCommit": {
+        "oid": "07718f5417cfc5203f5145a85bfa3725a9a4a41c"
+      },
       "comments": [
+        {
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "So, for a multiplexing protocol (SCTP, QUIC), CloseGroup and AbortGroup has a specific meaning to treat the group vs a single connection/stream.\r\n\r\nFor TCP/UDP I wrote it to be a no-op, but I can say that it affects any other connections that were cloned out? But I wonder if that might be a little weird too.",
+          "createdAt": "2022-03-20T12:19:01Z",
+          "updatedAt": "2022-03-20T12:19:01Z"
+        },
         {
           "author": "mwelzl",
           "authorAssociation": "CONTRIBUTOR",
-          "body": "Why this \"calling CloseGroup is identical to calling Close\" everywhere?  This seems counter-intuitive... am I missing something?   If I create a Connection Group by cloning a Connection a couple of times, no matter what the underlying protocol is, I would expect that calling CloseGroup on one of them closes them all.  This would match the semantics described in the interface draft, section 10.",
-          "createdAt": "2022-03-19T23:10:38Z",
-          "updatedAt": "2022-03-19T23:10:38Z"
+          "body": "I think we need the system to treat it that way for consistency. Clearly, for a mux'ing protocol this is the obvious choice - but the application is not aware of the protocol below... so if it creates a group of TCP connections, with or without congestion control coupling, it will expect:\r\n- that changing a connection property on one of the connections will affect the others (so that also must be implemented - because it WILL happen with a mux'ing protocol),\r\n- that closing the group will close them all.\r\n\r\nImagine an application getting QUIC once, and not getting it another time...  surely we need a consistent behavior towards the app for both of these cases?",
+          "createdAt": "2022-03-20T12:30:11Z",
+          "updatedAt": "2022-03-20T12:30:11Z"
+        },
+        {
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@mwelzl sounds good, please check the updated text (or suggest text if you have further ideas!)",
+          "createdAt": "2022-03-20T14:09:53Z",
+          "updatedAt": "2022-03-20T14:09:53Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOBx1JF842iyk_",
+          "commit": {
+            "abbreviatedOid": "7fb9d8d"
+          },
+          "author": "mwelzl",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "Sorry, I guess I should have made this a review, not a comment:\r\n\r\nWhy this \"calling CloseGroup is identical to calling Close\" everywhere? This seems counter-intuitive... am I missing something? If I create a Connection Group by cloning a Connection a couple of times, no matter what the underlying protocol is, I would expect that calling CloseGroup on one of them closes them all. This would match the semantics described in the interface draft, section 10.",
+          "createdAt": "2022-03-20T11:26:59Z",
+          "updatedAt": "2022-03-20T11:26:59Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i2-q",
+          "commit": {
+            "abbreviatedOid": "7fb9d8d"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-20T14:07:55Z",
+          "updatedAt": "2022-03-20T14:09:07Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\nCloseGroup:\r\n: Calling `CloseGroup` on a TCP Connection (CLOSE.TCP) is identical to calling `Close` on all TCP Connections\r\nwithin a group.\r\n\r\nAbortGroup:\r\n: Calling `AbortGroup` on a TCP Connection (ABORT.TCP) is identical to calling `Abort` on all TCP Connections\r\nwithin a group.\r\n\r\n```",
+              "createdAt": "2022-03-20T14:07:55Z",
+              "updatedAt": "2022-03-20T14:09:07Z"
+            },
+            {
+              "originalPosition": 22,
+              "body": "```suggestion\r\nCloseGroup:\r\n: Calling `CloseGroup` on a UDP Connection (ABORT.UDP(-Lite)) is identical to calling `Close` on all\r\nUDP Connections within a group.\r\n\r\nAbortGroup:\r\n: Calling `AbortGroup` on a UDP Connection (ABORT.UDP(-Lite)) is identical to calling `Close` on all\r\nUDP Connections within a group.\r\n\r\n```",
+              "createdAt": "2022-03-20T14:08:15Z",
+              "updatedAt": "2022-03-20T14:09:07Z"
+            },
+            {
+              "originalPosition": 31,
+              "body": "```suggestion\r\n: Calling `CloseGroup` on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling `Close` on all UDP Multicast Receive  Connections within a group.\r\n```",
+              "createdAt": "2022-03-20T14:08:51Z",
+              "updatedAt": "2022-03-20T14:09:07Z"
+            },
+            {
+              "originalPosition": 34,
+              "body": "```suggestion\r\n: Calling `AbortGroup` on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling `Close`\r\non all UDP Multicast Receive  Connections within a group.\r\n```",
+              "createdAt": "2022-03-20T14:09:02Z",
+              "updatedAt": "2022-03-20T14:09:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i3E3",
+          "commit": {
+            "abbreviatedOid": "8484070"
+          },
+          "author": "theri",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "This is probably fine as is, but I suggested alternative phrasing which might be even more clear.",
+          "createdAt": "2022-03-20T14:11:08Z",
+          "updatedAt": "2022-03-20T14:13:08Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "How about:\r\n\r\n```suggestion\r\n: Calling `CloseGroup` on a TCP Connection (CLOSE.TCP) is identical to calling `Close` on this Connection and on all Connections in the same ConnectionGroup.\r\n```\r\nThis is essentially what it says in Section 10 in the Interface draft, and perhaps the clearest way to phrase this.",
+              "createdAt": "2022-03-20T14:11:39Z",
+              "updatedAt": "2022-03-20T14:13:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i3Pe",
+          "commit": {
+            "abbreviatedOid": "8484070"
+          },
+          "author": "mwelzl",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "LGTM if the suggestion by @theri is applied everywhere.  Many thanks for doing this BTW!",
+          "createdAt": "2022-03-20T14:16:40Z",
+          "updatedAt": "2022-03-20T14:17:05Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "I like this - I think it should be phrased using that style for all the calls below. \"within a group\" is just a touch too vague IMO... it needs to be the group this connection is in, even though this is super obvious.",
+              "createdAt": "2022-03-20T14:16:40Z",
+              "updatedAt": "2022-03-20T14:17:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i3WT",
+          "commit": {
+            "abbreviatedOid": "8484070"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-20T14:20:41Z",
+          "updatedAt": "2022-03-20T14:20:41Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "```suggestion\r\nAbortGroup:\r\n: Calling `AbortGroup` on a TCP Connection (ABORT.TCP) is identical to calling `Abort` on this Connection and on all Connections in the same ConnectionGroup.\r\n```",
+              "createdAt": "2022-03-20T14:20:41Z",
+              "updatedAt": "2022-03-20T14:20:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i3Wq",
+          "commit": {
+            "abbreviatedOid": "8484070"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-20T14:20:56Z",
+          "updatedAt": "2022-03-20T14:20:56Z",
+          "comments": [
+            {
+              "originalPosition": 26,
+              "body": "```suggestion\r\nCloseGroup:\r\n: Calling `CloseGroup` on a UDP Connection (ABORT.UDP(-Lite)) is identical to calling `Close` on this Connection and on all Connections in the same ConnectionGroup.\r\n\r\nAbortGroup:\r\n: Calling `AbortGroup` on a UDP Connection (ABORT.UDP(-Lite)) is identical to calling `Close` on this Connection and on all Connections in the same ConnectionGroup.\r\n```",
+              "createdAt": "2022-03-20T14:20:56Z",
+              "updatedAt": "2022-03-20T14:20:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i3XE",
+          "commit": {
+            "abbreviatedOid": "8484070"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-20T14:21:11Z",
+          "updatedAt": "2022-03-20T14:21:12Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "```suggestion\r\nCloseGroup:\r\n: Calling `CloseGroup` on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling `Close` on this Connection and on all Connections in the same ConnectionGroup.\r\n\r\nAbortGroup:\r\n: Calling `AbortGroup` on a UDP Multicast Receive Connection (ABORT.UDP(-Lite)) is identical to calling `Close`\r\non this Connection and on all Connections in the same ConnectionGroup.\r\n\r\n```",
+              "createdAt": "2022-03-20T14:21:11Z",
+              "updatedAt": "2022-03-20T14:21:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i3YL",
+          "commit": {
+            "abbreviatedOid": "8484070"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-20T14:21:48Z",
+          "updatedAt": "2022-03-20T14:21:48Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Applied, thanks!",
+              "createdAt": "2022-03-20T14:21:48Z",
+              "updatedAt": "2022-03-20T14:21:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i37F",
+          "commit": {
+            "abbreviatedOid": "e5f0c2c"
+          },
+          "author": "mwelzl",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Great, thanks!!",
+          "createdAt": "2022-03-20T14:39:18Z",
+          "updatedAt": "2022-03-20T14:39:18Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOBx1JF842i7EI",
+          "commit": {
+            "abbreviatedOid": "e5f0c2c"
+          },
+          "author": "abrunstrom",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "LGTM with the updates, thanks!",
+          "createdAt": "2022-03-20T16:27:49Z",
+          "updatedAt": "2022-03-20T16:27:49Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
