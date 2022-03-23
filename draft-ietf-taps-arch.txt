@@ -5,14 +5,14 @@
 TAPS Working Group                                         T. Pauly, Ed.
 Internet-Draft                                                Apple Inc.
 Intended status: Standards Track                        B. Trammell, Ed.
-Expires: 21 September 2022                       Google Switzerland GmbH
+Expires: 24 September 2022                       Google Switzerland GmbH
                                                             A. Brunstrom
                                                      Karlstad University
                                                             G. Fairhurst
                                                   University of Aberdeen
                                                               C. Perkins
                                                    University of Glasgow
-                                                           20 March 2022
+                                                           23 March 2022
 
 
                  An Architecture for Transport Services
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 September 2022.
+   This Internet-Draft will expire on 24 September 2022.
 
 Copyright Notice
 
@@ -295,15 +295,20 @@ Table of Contents
    an asynchronous interface using the Socket API generally uses a try-
    and-fail model.  If the application wants to read, but data has not
    yet been received from the peer, the call to read will fail.  The
-   application then waits and can try again later.  In contrast to the
-   Socket API, all interaction using the Transport Services API is
-   expected to be asynchronous and use an event-driven model (see
-   Section 4.1.6).  For example, an application first issues a call to
-   receive new data from the connection.  When delivered data becomes
-   available, this data is delivered to the application using
-   asynchronous events that contain the data.  Error handling is also
-   asynchronous; a failure to send data results in an asynchronous error
-   event.
+   application then waits and can try again later.
+
+   In contrast to the Socket API, all interaction using the Transport
+   Services API is expected to be asynchronous.  The API is defined
+   around an event-driven model (see Section 4.1.6) in order to model
+   this asynchronous interaction, though other forms of asynchronous
+   communication may be available to applications depending on the
+   platform implementing the interface.
+
+   For example, an application first issues a call to receive new data
+   from the connection.  When delivered data becomes available, this
+   data is delivered to the application using asynchronous events that
+   contain the data.  Error handling is also asynchronous; a failure to
+   send data results in an asynchronous error event.
 
    This API also delivers events regarding the lifetime of a connection
    and changes in the available network links, which were not previously
