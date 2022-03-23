@@ -1603,8 +1603,10 @@ Action and Event parameters whose names are suffixed with a question mark are op
 <p id="section-1.1-14">Objects that are passed as parameters to Actions use call-by-value behavior.
 Actions associated with no Object are Actions on the API; they are equivalent to Actions on a per-application global context.<a href="#section-1.1-14" class="pilcrow">¶</a></p>
 <p id="section-1.1-15">Events are sent to the application or application-supplied code (e.g. framers, 
-see <a href="#framing" class="xref">Section 9.1.2</a>) for processing; the details of event processing 
-are platform- and implementation-specific.<a href="#section-1.1-15" class="pilcrow">¶</a></p>
+see <a href="#framing" class="xref">Section 9.1.2</a>) for processing; the details of event interfaces are platform-
+and implementation-specific, and may be implemented using
+other forms of asynchronous processing, as idiomatic for the 
+implementing platform.<a href="#section-1.1-15" class="pilcrow">¶</a></p>
 <p id="section-1.1-16">We also make use of the following basic types:<a href="#section-1.1-16" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1.1-17.1">Boolean: Instances take the value <code>true</code> or <code>false</code>.<a href="#section-1.1-17.1" class="pilcrow">¶</a>
