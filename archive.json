@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-22T00:32:38.436810+00:00",
+  "timestamp": "2022-03-24T00:34:05.912351+00:00",
   "repo": "ietf-tapswg/api-drafts",
   "labels": [
     {
@@ -20929,7 +20929,7 @@
       ],
       "body": "QUIC beat TAPS to the RFC Ed queue. Should the implementation draft provide a specific considerations sections for QUIC?\r\n\r\nIn my mental model of TAPS, providing a common API for QUIC implementations is one of the main reasons for TAPS adoption.",
       "createdAt": "2021-01-27T16:59:04Z",
-      "updatedAt": "2022-03-19T21:42:48Z",
+      "updatedAt": "2022-03-23T14:46:07Z",
       "closedAt": null,
       "comments": [
         {
@@ -20959,6 +20959,13 @@
           "body": "See https://github.com/tfpauly/draft-taps-quic-mapping",
           "createdAt": "2022-03-19T21:42:48Z",
           "updatedAt": "2022-03-19T21:42:48Z"
+        },
+        {
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I suspect that the existence of draft-(pauly-)taps-quic-mapping closes this issue in the affirmative.",
+          "createdAt": "2022-03-23T14:46:07Z",
+          "updatedAt": "2022-03-23T14:46:07Z"
         }
       ]
     },
@@ -25950,6 +25957,47 @@
           "updatedAt": "2022-02-02T16:55:55Z"
         }
       ]
+    },
+    {
+      "number": 1009,
+      "id": "I_kwDOBx1JF85GODgh",
+      "title": "Consider being less opinionated about event-based API earlier",
+      "url": "https://github.com/ietf-tapswg/api-drafts/issues/1009",
+      "state": "CLOSED",
+      "author": "britram",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "britram"
+      ],
+      "labels": [
+        "API",
+        "Architecture"
+      ],
+      "body": "Per slide 14 in Thorben Kr\u00fcger's presentation at IETF 113: https://datatracker.ietf.org/meeting/113/materials/slides-113-taps-panapi-implementation-00.pdf, clarify that the API is defined in terms of events to be general, not because you have to implement an event system if you're going to implement TAPS.",
+      "createdAt": "2022-03-23T12:59:52Z",
+      "updatedAt": "2022-03-23T14:48:15Z",
+      "closedAt": "2022-03-23T14:48:15Z",
+      "comments": []
+    },
+    {
+      "number": 1010,
+      "id": "I_kwDOBx1JF85GOTyO",
+      "title": "Add stream id's to Connection metadata",
+      "url": "https://github.com/ietf-tapswg/api-drafts/issues/1010",
+      "state": "OPEN",
+      "author": "mwelzl",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "mwelzl"
+      ],
+      "labels": [
+        "API"
+      ],
+      "body": "... combined with \"if the transport is mux'ing, else ...\"",
+      "createdAt": "2022-03-23T13:53:26Z",
+      "updatedAt": "2022-03-23T13:53:26Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -78965,6 +79013,48 @@
           "body": "LGTM with the updates, thanks!",
           "createdAt": "2022-03-20T16:27:49Z",
           "updatedAt": "2022-03-20T16:27:49Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 1011,
+      "id": "PR_kwDOBx1JF8404wty",
+      "title": "Make it clear that we use events to model asynchonous operations",
+      "url": "https://github.com/ietf-tapswg/api-drafts/pull/1011",
+      "state": "MERGED",
+      "author": "britram",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fix #1009 in architecture.",
+      "createdAt": "2022-03-23T14:36:09Z",
+      "updatedAt": "2022-03-23T14:48:20Z",
+      "baseRepository": "ietf-tapswg/api-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "07718f5417cfc5203f5145a85bfa3725a9a4a41c",
+      "headRepository": "ietf-tapswg/api-drafts",
+      "headRefName": "1009-event-means-async",
+      "headRefOid": "8429e94884e916c267850a2e03a85102cdbc98b9",
+      "closedAt": "2022-03-23T14:48:15Z",
+      "mergedAt": "2022-03-23T14:48:15Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "a39b0cc273051731a7f5578361b634930b3d4554"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOBx1JF842xWAQ",
+          "commit": {
+            "abbreviatedOid": "8429e94"
+          },
+          "author": "mwelzl",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2022-03-23T14:46:12Z",
+          "updatedAt": "2022-03-23T14:46:12Z",
           "comments": []
         }
       ]
