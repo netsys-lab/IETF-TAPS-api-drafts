@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-24T00:34:05.912351+00:00",
+  "timestamp": "2022-03-29T00:37:33.270994+00:00",
   "repo": "ietf-tapswg/api-drafts",
   "labels": [
     {
@@ -20920,7 +20920,7 @@
       "id": "MDU6SXNzdWU3OTUyNzY1ODY=",
       "title": "Is it time for QUIC?",
       "url": "https://github.com/ietf-tapswg/api-drafts/issues/726",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -20929,8 +20929,8 @@
       ],
       "body": "QUIC beat TAPS to the RFC Ed queue. Should the implementation draft provide a specific considerations sections for QUIC?\r\n\r\nIn my mental model of TAPS, providing a common API for QUIC implementations is one of the main reasons for TAPS adoption.",
       "createdAt": "2021-01-27T16:59:04Z",
-      "updatedAt": "2022-03-23T14:46:07Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-27T21:30:07Z",
+      "closedAt": "2022-03-27T21:30:07Z",
       "comments": [
         {
           "author": "gorryfair",
