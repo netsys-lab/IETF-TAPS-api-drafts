@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-04-07T00:36:27.103393+00:00",
+  "timestamp": "2022-04-14T00:40:54.272895+00:00",
   "repo": "ietf-tapswg/api-drafts",
   "labels": [
     {
@@ -79091,6 +79091,34 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 1013,
+      "id": "PR_kwDOBx1JF842Iy41",
+      "title": "Fix two minor typos in architecture document",
+      "url": "https://github.com/ietf-tapswg/api-drafts/pull/1013",
+      "state": "MERGED",
+      "author": "TheNCuber",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This pull requests fixes two minor typos in draft-ietf-taps-arch.md that I noticed during detailed reading of the draft.",
+      "createdAt": "2022-04-12T23:16:43Z",
+      "updatedAt": "2022-04-12T23:39:27Z",
+      "baseRepository": "ietf-tapswg/api-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "a39b0cc273051731a7f5578361b634930b3d4554",
+      "headRepository": null,
+      "headRefName": "fix-typos",
+      "headRefOid": "003c8d64546eb862b990934556653ccea0511a02",
+      "closedAt": "2022-04-12T23:39:27Z",
+      "mergedAt": "2022-04-12T23:39:27Z",
+      "mergedBy": "mwelzl",
+      "mergeCommit": {
+        "oid": "debe7d328314e475f9ac40ecd3bbc12ad6a8221c"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
